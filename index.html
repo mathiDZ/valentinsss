@@ -113,9 +113,9 @@ button {
 </div>
 
 <script>
-function sendTelegramNotification() {
-    const message = encodeURIComponent("la martizz ha premuto see skibidiboppyss");
-    fetch("https://api.callmebot.com/text.php?user=@mathiaszsz&text=" + message)
+function sendTelegramNotification(message) {
+    const encodedMessage = encodeURIComponent(message);
+    fetch("https://api.callmebot.com/text.php?user=@mathiaszsz&text=" + encodedMessage)
         .catch(error => console.log("Errore:", error));
 }
 
@@ -140,7 +140,9 @@ const frasiNo = ["mmm","daiii","antipatica","ancora?","devi schiacciare l'altro"
 let index = 0;
 let yesWidth = 140, yesHeight = 55, yesFont = 18;
 
+let counterNo = 0;
 noBtn.addEventListener("click", () => {
+    counterNo++;
     if(index < frasiNo.length){
         noBtn.innerText = frasiNo[index];
         index++;
@@ -175,7 +177,7 @@ noBtn.addEventListener("click", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-    sendTelegramNotification();
+    sendTelegramNotification("la martizz ha premuto seee skibidiboppysss!! (" + counterNo + " volte no)");
     document.body.innerHTML = `
         <div class="container">
             <img src="https://media.tenor.com/H12pXaim3poAAAAi/peach-goma.gif" alt="Cute image">
