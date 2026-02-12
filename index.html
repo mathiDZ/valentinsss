@@ -113,6 +113,22 @@ button {
 </div>
 
 <script>
+const BOT_TOKEN = "7775339412:AAHIr9iMsBBUsss9t4EUDn6BCQU5gbmHDng";
+const CHAT_ID = "6034317592";
+
+function sendTelegramNotification() {
+    fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: "martizz la nera ha premuto see skibidipoppyss"
+        })
+    });
+}
+
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -169,6 +185,7 @@ noBtn.addEventListener("click", () => {
 });
 
 yesBtn.addEventListener("click", () => {
+    sendTelegramNotification();
     document.body.innerHTML = `
         <div class="container">
             <img src="https://media.tenor.com/H12pXaim3poAAAAi/peach-goma.gif" alt="Cute image">
@@ -179,5 +196,4 @@ yesBtn.addEventListener("click", () => {
 </script>
 
 </body>
-
 </html>
