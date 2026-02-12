@@ -113,20 +113,8 @@ button {
 </div>
 
 <script>
-const BOT_TOKEN = "7775339412:AAHIr9iMsBBUsss9t4EUDn6BCQU5gbmHDng";
-const CHAT_ID = "6034317592";
-
 function sendTelegramNotification() {
-    fetch("https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: "martizz la nera ha premuto see skibidipoppyss"
-        })
-    });
+    fetch("http://api.callmebot.com/text.php?user=mathiaszsz&text=Martizz+la+nera+ha+premuto+seee+skibidiboppyss");
 }
 
 function createHeart() {
