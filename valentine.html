@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALENTINSSS💘</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* niente scroll */
+}
+
+body {
+    background: linear-gradient(135deg, #bb36c7, #ff99c8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.7);
+    font-size: 20px;
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) scale(1); opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+p {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 250px;
+    max-width: 90vw;
+    border-radius: 15px;
+    margin-bottom: 0px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap; /* impedisce al testo di andare a capo */
+}
+
+#yesBtn {
+    background-color: #ff0055;
+    color: white;
+    width: 140px;
+    height: 55px;
+}
+
+#noBtn {
+    background-color: white;
+    color: #ff0055;
+    /* inizialmente normale nel flex */
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+    h1 { font-size: 6vw; }
+    p { font-size: 4vw; }
+    img { width: 40vw; }
+    button { padding: 12px 20px; font-size: 4vw; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="https://media.tenor.com/NPpAVYU5NBQAAAAi/vvv-goma-peach-grow-comfort.gif" alt="Cute image">
+    <p>(nana)</p>
+    <h1>Vuoi essere la mia Valentinaa??</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">SI</button>
+        <button id="noBtn">NO</button>
+    </div>
+</div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 5) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 300);
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+const frasiNo = ["mmm","daiii","antipatica","ancora?","devi schiacciare l'altro",
+"plss","bruuh","te ne pentirai","gay","l'hai voluto te"];
+
+let index = 0;
+let yesWidth = 140, yesHeight = 55, yesFont = 18;
+
+noBtn.addEventListener("click", () => {
+    if(index < frasiNo.length){
+        noBtn.innerText = frasiNo[index];
+        index++;
+
+        yesBtn.innerText += "I";
+
+        // crescita SI senza uscire dallo schermo
+        yesWidth = Math.min(yesWidth + 50, window.innerWidth - 20);
+        yesHeight = Math.min(yesHeight + 24, window.innerHeight - 20);
+        yesFont = Math.min(yesFont + 8, 100);
+
+        yesBtn.style.width = yesWidth + "px";
+        yesBtn.style.height = yesHeight + "px";
+        yesBtn.style.fontSize = yesFont + "px";
+
+        // rendi NO assoluto per farlo scappare
+        noBtn.style.position = "absolute";
+
+        const maxX = window.innerWidth - noBtn.offsetWidth - 10;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 10;
+        noBtn.style.left = Math.random() * maxX + "px";
+        noBtn.style.top = Math.random() * maxY + "px";
+
+    } else {
+        yesBtn.innerText += "!\n(ti tocca)";
+        yesBtn.style.width = "90vw";
+        yesBtn.style.height = "70vh";
+        yesBtn.style.fontSize = "12vw";
+        yesBtn.style.whiteSpace = "nowrap";
+        noBtn.style.display = "none";
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div class="container">
+            <img src="https://media.tenor.com/H12pXaim3poAAAAi/peach-goma.gif" alt="Cute image">
+            <h1>✨ziiii✨</h1>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
