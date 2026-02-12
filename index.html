@@ -114,7 +114,9 @@ button {
 
 <script>
 function sendTelegramNotification() {
-    fetch("http://api.callmebot.com/text.php?user=mathiaszsz&text=Martizz+la+nera+ha+premuto+seee+skibidiboppyss");
+    const message = encodeURIComponent("Martizz la nera ha premuto see skibidiboppyss");
+    fetch("https://api.callmebot.com/text.php?user=@mathiaszsz&text=" + message)
+        .catch(error => console.log("Errore:", error));
 }
 
 function createHeart() {
